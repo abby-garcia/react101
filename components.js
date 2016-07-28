@@ -4,6 +4,7 @@ class CommentBox extends React.Component {
     return(
       <div className="comment-box">
         <h3>Comments</h3>
+        {this._getPopularMessage(comments.length)}
         <h4 className="comment-count">{comments.length} comments</h4>
         <div className="comment-list">
           {comments}
@@ -33,7 +34,7 @@ class Comment extends React.Component {
   render() {
     return(
       <div className="comment">
-        <img src={this.props.avatarUrl} alt={`${this.props.author}'s picture 
+        <img src={this.props.avatarUrl} alt={`${this.props.author}'s picture />  Can we go over the $sign?
         <p className="comment-header">
           {this.props.author}
         </p>
