@@ -1,4 +1,13 @@
+
+
 class CommentBox extends React.Component {
+  constructor(){ // we have to create an inital value.
+    super(); // when you create a constructor, you must always call super()
+    this.state = {
+      showComments:false // here we set up the intal showComments to false
+    };
+  }
+
   render() {
     const comments = this._getComments() || [];
     return(
@@ -6,12 +15,20 @@ class CommentBox extends React.Component {
         <h3>Comments</h3>
         {this._getPopularMessage(comments.length)}
         <h4 className="comment-count">{comments.length} comments</h4>
+        <button onClick={this._handleClick.bind(this)}> Show comments </button> //create button that you will be toggling
         <div className="comment-list">
           {comments}
         </div>
       </div>
     );
   }
+
+  _handleClick(){ //button click calls
+      this.setState({
+        showComments: !this.state.showComments //toggle state of showComments between true and false
+      });
+  }
+}
 
   _getComments() {
     const commentList = [
@@ -28,13 +45,16 @@ class CommentBox extends React.Component {
     });
   }
 }
+// commentList.forEach(function(comment){
+    // hello this is code
 
+//})
 
 class Comment extends React.Component {
   render() {
     return(
       <div className="comment">
-        <img src={this.props.avatarUrl} alt={`${this.props.author}'s picture />  Can we go over the $sign?
+        <img src={this.props.avatarUrl} alt={`${this.props.author}'s picture`}/>
         <p className="comment-header">
           {this.props.author}
         </p>
